@@ -23,8 +23,12 @@
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
+<!--Achtung die Sortierung (sorter) funktioniert kommt aber aus dem Mockser, muss später nicht unbedingt funktionieren-->
 			<List id="list"
-				items="{ path: '/FlugkundenSet', sorter: { path: 'Custname', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+				items="{ 
+					path: '/FlugkundenSet', sorter:	{
+						path: 'Custname', descending: false },
+						groupHeaderFactory: '.createGroupHeader' }"
 				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
 				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
 				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
