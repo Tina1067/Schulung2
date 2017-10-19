@@ -1,0 +1,80 @@
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_FLUGKUNDEN_005_SRV" xml:lang="de" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Fluguchung" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrid"/>
+                    <PropertyRef Name="Bookid"/>
+                </Key>
+                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Fluggesellschaft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Flugnummer" sap:filterable="false"/>
+                <Property Name="Fldate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Flugdatum" sap:filterable="false"/>
+                <Property Name="Bookid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Buchungsnummer" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Customid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Kundennummer" sap:filterable="false"/>
+                <Property Name="Class" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Klasse" sap:filterable="false"/>
+                <Property Name="OrderDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Buchungsdatum" sap:filterable="false"/>
+                <Property Name="Counter" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Verkaufsstelle" sap:filterable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Reisebüronr." sap:filterable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Stornokennzeichen" sap:filterable="false"/>
+                <Property Name="Reserved" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="reserviert" sap:filterable="false"/>
+                <Property Name="Passname" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Passagiername" sap:filterable="false"/>
+                <NavigationProperty Name="Kunde" Relationship="ZGW_FLUGKUNDEN_005_SRV.Kunde_Buchung" FromRole="ToRole_Kunde_Buchung" ToRole="FromRole_Kunde_Buchung"/>
+            </EntityType>
+            <EntityType Name="Flugkunde" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customerid"/>
+                </Key>
+                <Property Name="Customerid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Kundennummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Custname" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Kundenname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Form" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Anrede" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Street" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Strasse" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pobox" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Postfach" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Postcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Postleitzahl" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Stadt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Countr" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Land" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CountrIso" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="ISO-Code Land" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Region" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phone" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Telefon" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="E-Mail-Adresse" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Buchungen" Relationship="ZGW_FLUGKUNDEN_005_SRV.Kunde_Buchung" FromRole="FromRole_Kunde_Buchung" ToRole="ToRole_Kunde_Buchung"/>
+            </EntityType>
+            <ComplexType Name="BookSum">
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SUM" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="Kunde_Buchung" sap:content-version="1">
+                <End Type="ZGW_FLUGKUNDEN_005_SRV.Flugkunde" Multiplicity="1" Role="FromRole_Kunde_Buchung"/>
+                <End Type="ZGW_FLUGKUNDEN_005_SRV.Fluguchung" Multiplicity="*" Role="ToRole_Kunde_Buchung"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Kunde_Buchung">
+                        <PropertyRef Name="Customerid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Kunde_Buchung">
+                        <PropertyRef Name="Customid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGW_FLUGKUNDEN_005_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="FlugkundenSet" EntityType="ZGW_FLUGKUNDEN_005_SRV.Flugkunde" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FluguchungSet" EntityType="ZGW_FLUGKUNDEN_005_SRV.Fluguchung" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="Kunde_BuchungSet" Association="ZGW_FLUGKUNDEN_005_SRV.Kunde_Buchung" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FlugkundenSet" Role="FromRole_Kunde_Buchung"/>
+                    <End EntitySet="FluguchungSet" Role="ToRole_Kunde_Buchung"/>
+                </AssociationSet>
+                <FunctionImport Name="GetBookSum" ReturnType="ZGW_FLUGKUNDEN_005_SRV.BookSum" m:HttpMethod="GET" sap:action-for="ZGW_FLUGKUNDEN_005_SRV.Flugkunde">
+                    <Parameter Name="CustomerID" Type="Edm.String" Mode="In" MaxLength="8"/>
+                    <Parameter Name="Currency" Type="Edm.String" Mode="In" MaxLength="3"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="./sap/ZGW_FLUGKUNDEN_005_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="./sap/ZGW_FLUGKUNDEN_005_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

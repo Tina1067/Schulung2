@@ -1,0 +1,68 @@
+<mvc:View controllerName="de.schulung.appflights.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit ZGW_FLUGKUNDEN_005_SRV.Flugkunde': 'New ZGW_FLUGKUNDEN_005_SRV.Flugkunde'}">
+				<f:content>
+					<Label text="Kundennummer" required="true"/>
+					<Input name="Customerid" id="Customerid_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Customerid', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:8, nullable:false } }"/>
+					<Label text="Kundenname" required="true"/>
+					<Input name="Custname" id="Custname_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Custname', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:25, nullable:false } }"/>
+					<Label text="Anrede" required="true"/>
+					<Input name="Form" id="Form_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Form', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:15, nullable:false } }"/>
+					<Label text="Strasse" required="true"/>
+					<Input name="Street" id="Street_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Street', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+					<Label text="Postfach" required="true"/>
+					<Input name="Pobox" id="Pobox_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Pobox', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="Postleitzahl" required="true"/>
+					<Input name="Postcode" id="Postcode_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Postcode', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="Stadt" required="true"/>
+					<Input name="City" id="City_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'City', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:25, nullable:false } }"/>
+					<Label text="Land" required="true"/>
+					<Input name="Countr" id="Countr_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Countr', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:3, nullable:false } }"/>
+					<Label text="ISO-Code Land" required="true"/>
+					<Input name="CountrIso" id="CountrIso_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'CountrIso', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:2, nullable:false } }"/>
+					<Label text="Region" required="true"/>
+					<Input name="Region" id="Region_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Region', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:3, nullable:false } }"/>
+					<Label text="Telefon" required="true"/>
+					<Input name="Phone" id="Phone_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Phone', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+					<Label text="E-Mail-Adresse" required="true"/>
+					<Input name="Email" id="Email_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Email', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:40, nullable:false } }"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
