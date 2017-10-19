@@ -31,7 +31,7 @@
   "mockpreview": {
     "mockUri": "/sap/opu/odata/sap/ZGW_FLUGKUNDEN_005_SRV",
     "metadataFilePath": "",
-    "loadJSONFiles": false,
+    "loadJSONFiles": true,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""
   },

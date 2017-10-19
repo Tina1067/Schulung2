@@ -1,4 +1,6 @@
 /*global history */
+/*Funktionen, die immer wieder benötigt werden, werden hierhin ausgelagert
+getRouter macht die Navigation auf der Oberfläche*/
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History"
@@ -21,6 +23,7 @@ sap.ui.define([
 		 * @param {string} sName the model name
 		 * @returns {sap.ui.model.Model} the model instance
 		 */
+/*Zugriff aus dem Controller auf ein beliebiges Model*/
 		getModel: function(sName) {
 			return this.getView().getModel(sName);
 		},
@@ -51,6 +54,8 @@ sap.ui.define([
 		 * If not, it will replace the current entry of the browser history with the master route.
 		 * @public
 		 */
+		 /*NavBack ist dafür da zurückspringen zu können, innerhalb der App kann man zB ein Schritt zurück springen
+		 die Browserhistorie merkt sich die APP und so kann er auf die letzte URL zurück springen*/
 		onNavBack: function() {
 			var sPreviousHash = History.getInstance().getPreviousHash();
 

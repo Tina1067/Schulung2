@@ -1,9 +1,20 @@
-<mvc:View controllerName="de.schulung.appflights.controller.Master" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m"
+<mvc:View 
+	controllerName="de.schulung.appflights.controller.Master" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:core="sap.ui.core" 
+	xmlns="sap.m"
 	xmlns:semantic="sap.m.semantic">
-	<semantic:MasterPage id="page" title="{masterView>/title}" navButtonPress="onNavBack" showNavButton="true">
+	<!--semantic hat den Nachteil das nur bestimmte bzw. eingeschränkte Eigenschaften ausgewiesen werden-->
+	<!--MasteerPage für die SplitAPP-->
+	<semantic:MasterPage 
+		id="page" 
+		title="{masterView>/title}" 
+		navButtonPress="onNavBack" showNavButton="true">
+		<!--Masterpage kann eine Unterüberschrift haben-->
 		<semantic:subHeader>
 			<Bar id="headerBar">
 				<contentMiddle>
+		<!--Hier wird das Suchfeld defieniert-->
 					<SearchField id="searchField" showRefreshButton="{= !${device>/support/touch} }" tooltip="{i18n>masterSearchTooltip}" width="100%"
 						search="onSearch"></SearchField>
 				</contentMiddle>
@@ -28,6 +39,7 @@
 			</List>
 		</semantic:content>
 		<semantic:addAction>
+			<!--ist der Footer Plus-Button links-->
 			<semantic:AddAction id="addButton" enabled="{appView>/addEnabled}" press="onAdd"/>
 		</semantic:addAction>
 	</semantic:MasterPage>

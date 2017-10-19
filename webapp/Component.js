@@ -19,6 +19,10 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
+		 /*this.oListSelector = new ListSelector();
+		 damit das erste Listelement gleich mit seinen Daten angezeigt wird*/
+		 /*	this.setModel(models.createDeviceModel(), "device"); wofür 
+		 die APP ist, mobel..*/
 		init: function() {
 			this.oListSelector = new ListSelector();
 			this._oErrorHandler = new ErrorHandler(this);
@@ -41,6 +45,8 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
+		 /*Destroy ist für Aufräumareiten, wenn die APP geschlossen wird.
+		 Damit für den nächsten Aufruf keine Sachen übrig bleiben*/
 		destroy: function() {
 			this.oListSelector.destroy();
 			this._oErrorHandler.destroy();
@@ -54,6 +60,8 @@ sap.ui.define([
 		 * @public
 		 * @return {string} css class, either 'sapUiSizeCompact' or 'sapUiSizeCozy' - or an empty string if no css class should be set
 		 */
+		 /*Device.support.touch wenn die APP Touch unterstützt wird der Abstand angepasst merge und padding
+		 für den Abstand*/
 		getContentDensityClass: function() {
 			if (this._sContentDensityClass === undefined) {
 				// check whether FLP has already set the content density class; do nothing in this case
